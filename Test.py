@@ -1,13 +1,17 @@
 ## Imports
 from tkinter import *
+from tkinter import messagebox
+from is_pos import is_positive_float
 
 ## Main Program
 # Functions
 def pounds_to_euros():
     pounds = txt_pounds.get()
-    euros = float(pounds)
-    txt_euros.insert(END, f"{euros:.2f}")
-
+    if is_positive_float(pounds):    
+        euros = float(pounds) * 1.16
+        txt_euros.insert(END, f"{euros:.2f}")
+    else:
+        messagebox.showerror("Error", "Please enter a number greater than 0")
 window = Tk()
 window.geometry("200x300")
 
